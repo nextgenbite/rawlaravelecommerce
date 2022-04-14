@@ -80,7 +80,7 @@
 <!-- create a new account -->			</div><!-- /.row -->
 		</div><!-- /.sigin-in-->
 		<!-- ============================================== BRANDS CAROUSEL ============================================== -->
-        {{-- @include('frontend.body.brand') --}}
+        @include('frontend.body.brand')
         <!-- /.logo-slider --> 
 <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->	</div><!-- /.container -->
 </div>
