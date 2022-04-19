@@ -1,10 +1,15 @@
+@php
+  $prefix = Request::route()->getPrefix();
+  $route = Route::current()->getName();
+ 
+@endphp
 <aside class="main-sidebar">
     <!-- sidebar-->
     <section class="sidebar">	
 		
         <div class="user-profile">
 			<div class="ulogo">
-				 <a href="index.html">
+				 <a href="{{Route('admin.dashboard')}} ">
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">					 	
 						  <img src="{{asset('backend/images/logo-dark.png')}}" alt="">
@@ -17,14 +22,14 @@
       <!-- sidebar menu-->
       <ul class="sidebar-menu" data-widget="tree">  
 		  
-		<li>
-          <a href="index.html">
+		<li class="{{ ($route == 'admin.dashboard')? 'active':'' }}">
+          <a href="{{Route('admin.dashboard')}}">
             <i data-feather="pie-chart"></i>
 			<span>Dashboard</span>
           </a>
         </li>  
 		
-        <li class="treeview">
+        <li class="treeview {{ ($route == 'brand.index' || $route == 'brand.edit')? 'active':'' }}">
           <a href="#">
             <i data-feather="message-circle"></i>
             <span>Brand</span>
@@ -33,11 +38,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="chat.html"><i class="ti-more"></i>Brands</a></li>
+            <li><a href="{{Route('brand.index')}} "><i class="ti-more"></i>Brands</a></li>
            
           </ul>
         </li> 
-        <li class="treeview">
+        <li class="treeview {{ ($route == 'category.index' || $route == 'category.edit' )? 'active':'' }} ">
           <a href="#">
             <i data-feather="message-circle"></i>
             <span>Category</span>
@@ -46,7 +51,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="chat.html"><i class="ti-more"></i>Categories</a></li>
+            <li><a href="{{Route('category.index')}}"><i class="ti-more"></i>Categories</a></li>
+            <li><a href="{{Route('subcategory.index')}}"><i class="ti-more"></i>Sub Categories</a></li>
+            <li><a href="{{Route('subsubcategory.index')}}"><i class="ti-more"></i>Sub Sub Categories</a></li>
         
           </ul>
         </li> 

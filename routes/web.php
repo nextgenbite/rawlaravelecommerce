@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\SubSubCategoryController;
 use App\Http\Controllers\Frontend\IndexController;
 
 /*
@@ -27,7 +31,7 @@ Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
     return view('admin.index');
-})->name('dashboard');
+})->name('admin.dashboard');
 
 // admin all route are here
 
@@ -37,6 +41,16 @@ Route::get('admin/profile/edit',[AdminProfileController::class, 'edit'])->name('
 Route::post('admin/profile/update',[AdminProfileController::class, 'update'])->name('admin.profile.update');
 Route::get('admin/change/password',[AdminProfileController::class, 'PasswordChange'])->name('admin.change.password');
 Route::post('admin/update/password',[AdminProfileController::class, 'PasswordUpdate'])->name('admin.update.password');
+
+Route::middleware(['auth:sanctum,admin', 'verified'])->prefix('admin')->group(function()
+{
+    
+// Admin Brands
+Route::resource('brand', BrandController::class);
+Route::resource('category', CategoryController::class);
+Route::resource('subcategory', SubCategoryController::class);
+Route::resource('subsubcategory', SubSubCategoryController::class);
+});
 
 //// Frontend All Routes /////
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
