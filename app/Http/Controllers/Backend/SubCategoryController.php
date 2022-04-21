@@ -19,7 +19,7 @@ class SubCategoryController extends Controller
       
         $category =Category::orderBy('category_name_en','ASC')->get();
 
-        return view('backend.category.subsubcategory.index', compact('subcat', 'category'));
+        return view('backend.subcategory.index', compact('subcat', 'category'));
     }
 
     /**
@@ -41,14 +41,14 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {
       
-        // $request->validate([
-    	// 	'subcategory_name_en' => 'required',
-    	// 	'subcategory_name_bn' => 'required',
+        $request->validate([
+    		'subcategory_name_en' => 'required',
+    		'subcategory_name_bn' => 'required',
     		
-    	// ],[
-    	// 	'subcategory_name_en.required' => 'Input Sub Category English Name',
-    	// 	'subcategory_name_bn.required' => 'Input Sub Category Bangla Name',
-    	// ]);
+    	],[
+    		'subcategory_name_en.required' => 'Input Sub Category English Name',
+    		'subcategory_name_bn.required' => 'Input Sub Category Bangla Name',
+    	]);
 
 	SubCategory::create([
         'category_id' => $request->category_id,
@@ -59,7 +59,7 @@ class SubCategoryController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Category Inserted Successfully',
+			'message' => 'Sub Category Inserted Successfully',
 			'alert-type' => 'success'
 		);
 

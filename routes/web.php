@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Frontend\IndexController;
 
 /*
@@ -50,7 +51,13 @@ Route::resource('brand', BrandController::class);
 Route::resource('category', CategoryController::class);
 Route::resource('subcategory', SubCategoryController::class);
 Route::resource('subsubcategory', SubSubCategoryController::class);
+
+Route::get('/subcategory/ajax/{category_id}', [SubSubCategoryController::class, 'GetSubCategory']);
+
+Route::get('/subsubcategory/ajax/{subcategory_id}', [SubSubCategoryController::class, 'GetSubSubCategory']);
 });
+// products
+Route::resource('product', ProductController::class);
 
 //// Frontend All Routes /////
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {

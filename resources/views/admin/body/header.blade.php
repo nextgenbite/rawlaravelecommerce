@@ -27,11 +27,13 @@
 			  </div>
 		  </li>			
 		  
-		  
+		  @php
+			 $profile_photo = App\Models\Admin::find(1);
+		  @endphp
 	      <!-- User Account-->
           <li class="dropdown user user-menu">	
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
-				<img src="{{asset('/backend/images/avatar/1.jpg')}} " alt="">
+				<img src="{{(!empty($profile_photo->profile_photo_path))? url('uploads/admin_images/'.$profile_photo->profile_photo_path) : url('uploads/no_image.jpg')}} " alt="">
 			</a>
 			<ul class="dropdown-menu animated flipInX">
 			  <li class="user-body">

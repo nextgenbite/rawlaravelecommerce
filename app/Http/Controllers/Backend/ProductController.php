@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -14,7 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $index =Product::latest()->get();
+       return view('backend.product.index', compact('index'));
     }
 
     /**
@@ -24,7 +28,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $brand =Brand::select('brand_name_en', 'id')->orderBy('brand_name_en', 'ASC')->get();
+        $cat =category::select('category_name_en', 'id')->orderBy('category_name_en', 'ASC')->get();
+        //return response()->json($cat);
+        return view('backend.product.create', compact('cat', 'brand'));
     }
 
     /**

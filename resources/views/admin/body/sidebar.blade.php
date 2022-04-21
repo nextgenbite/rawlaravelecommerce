@@ -56,7 +56,22 @@
             <li><a href="{{Route('subsubcategory.index')}}"><i class="ti-more"></i>Sub Sub Categories</a></li>
         
           </ul>
-        </li> 
+        </li>
+
+        <li class="treeview {{ ($route == 'product.index' || $route == 'product.edit')? 'active':'' }}">
+          <a href="#">
+            <i data-feather="message-circle"></i>
+            <span>Product</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{Route('product.create')}} "><i class="ti-more"></i>Add Products</a></li>
+            <li><a href="{{Route('product.index')}} "><i class="ti-more"></i>Products</a></li>
+           
+          </ul>
+        </li>  
         
  	  
 		 
