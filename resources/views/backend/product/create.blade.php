@@ -8,15 +8,28 @@
 <!--   ------------ Add Product Page -------- -->
 <div class="box">
 <div class="box-header with-border">
-<h3 class="box-title">Add Product </h3>
+    @if (isset($edit))
+        
+    <h3 class="box-title">Update Product </h3>
+    @else
+        
+    <h3 class="box-title">Add Product </h3>
+    @endif
 </div>
 <!-- /.box-header -->
 <div class="box-body">
+    @if (isset($edit))
+        
+    <form method="POST" action="{{Route('product.update', $edit->id)}}" enctype="multipart/form-data" >
+        @csrf
+        @method('PATCH')   
+    @else
+        
+    <form method="POST" action="{{Route('product.store')}}" enctype="multipart/form-data" >
+        @csrf
+    @endif
 
-
-        <form method="POST" action="{{Route('product.store')}}" enctype="multipart/form-data" >
-            @csrf
-            @method('PATCH')   
+  
     <div class="row">
         <div class="col-4">
             <div class="form-group">
@@ -85,7 +98,7 @@
             <div class="form-group">
                 <h5>Product Name English <span class="text-danger">*</span></h5>
                 <div class="controls">
-             <input type="text" name="product_name_en" class="form-control" >
+             <input type="text" name="product_name_en" value="{{isset($edit) ? $edit->product_name_en: '' }} " class="form-control" >
              @error('product_name_en') 
              <span class="text-danger">{{ $message }}</span>
              @enderror 
@@ -96,7 +109,7 @@
             <div class="form-group">
                 <h5>Product Name Bangla <span class="text-danger">*</span></h5>
                 <div class="controls">
-             <input type="text" name="product_name_bn" class="form-control" >
+             <input type="text" name="product_name_bn" value="{{isset($edit) ? $edit->product_name_bn: '' }}" class="form-control" >
              @error('product_name_bn') 
              <span class="text-danger">{{ $message }}</span>
              @enderror 
@@ -109,7 +122,7 @@
             <div class="form-group">
                 <h5>Product Code <span class="text-danger">*</span></h5>
                 <div class="controls">
-             <input type="text" name="product_code" class="form-control" >
+             <input type="text" name="product_code" value="{{isset($edit) ? $edit->product_code: ''}} " class="form-control" >
              @error('product_code') 
              <span class="text-danger">{{ $message }}</span>
              @enderror 
@@ -120,7 +133,7 @@
             <div class="form-group">
                 <h5>Product Quantity  <span class="text-danger">*</span></h5>
                 <div class="controls">
-             <input type="text" name="product_qty" class="form-control" >
+             <input type="text" name="product_qty" value="{{isset($edit) ? $edit->product_qty : ''}} " class="form-control" >
              @error('product_qty') 
              <span class="text-danger">{{ $message }}</span>
              @enderror 
@@ -131,7 +144,7 @@
             <div class="form-group">
                 <h5>Product Tags English <span class="text-danger">*</span></h5>
                 <div class="controls">
-             <input type="text" name="product_tags_en" class="form-control" >
+             <input type="text" name="product_tags_en" value="{{isset($edit) ? $edit->product_tags_en : ''}} " class="form-control" >
              @error('product_tags_en') 
              <span class="text-danger">{{ $message }}</span>
              @enderror 
@@ -144,8 +157,8 @@
             <div class="form-group">
                 <h5>Product Tags Bangla <span class="text-danger">*</span></h5>
                 <div class="controls">
-             <input type="text" name="product_tags_en" class="form-control" >
-             @error('product_tags_en') 
+             <input type="text" name="product_tags_bn" value="{{isset($edit) ? $edit->product_tags_bn : ''}} " class="form-control" >
+             @error('product_tags_bn') 
              <span class="text-danger">{{ $message }}</span>
              @enderror 
               </div>
@@ -155,7 +168,7 @@
             <div class="form-group">
                 <h5>Product Size English <span class="text-danger">*</span></h5>
                 <div class="controls">
-             <input type="text" name="product_size_en" class="form-control" >
+             <input type="text" name="product_size_en" value="{{isset($edit) ? $edit->product_size_en : ''}} " class="form-control" >
              @error('product_size_en') 
              <span class="text-danger">{{ $message }}</span>
              @enderror 
@@ -166,7 +179,7 @@
             <div class="form-group">
                 <h5>Product Size Bangla <span class="text-danger">*</span></h5>
                 <div class="controls">
-             <input type="text" name="product_size_bn" class="form-control" >
+             <input type="text" name="product_size_bn" value="{{isset($edit) ? $edit->product_size_bn : ''}} " class="form-control" >
              @error('product_size_bn') 
              <span class="text-danger">{{ $message }}</span>
              @enderror 
@@ -179,7 +192,7 @@
             <div class="form-group">
                 <h5>Product Color English <span class="text-danger">*</span></h5>
                 <div class="controls">
-             <input type="text" name="product_color_en" class="form-control" >
+             <input type="text" name="product_color_en" value="{{isset($edit) ? $edit->product_color_en : ''}} " class="form-control" >
              @error('product_color_en') 
              <span class="text-danger">{{ $message }}</span>
              @enderror 
@@ -190,7 +203,7 @@
             <div class="form-group">
                 <h5>Product Color Bangla <span class="text-danger">*</span></h5>
                 <div class="controls">
-             <input type="text" name="product_color_bn" class="form-control" >
+             <input type="text" name="product_color_bn" value="{{isset($edit) ? $edit->product_color_bn : ''}}" class="form-control" >
              @error('product_color_bn') 
              <span class="text-danger">{{ $message }}</span>
              @enderror 
@@ -201,7 +214,7 @@
             <div class="form-group">
                 <h5>Product Selling Price <span class="text-danger">*</span></h5>
                 <div class="controls">
-             <input type="text" name="subcategory_name_en" class="form-control" >
+             <input type="text" name="selling_price" value="{{isset($edit) ? $edit->selling_price : ''}}" class="form-control" >
              @error('subcategory_name_en') 
              <span class="text-danger">{{ $message }}</span>
              @enderror 
@@ -215,7 +228,7 @@
             <div class="form-group">
                   <h5>Product Discount Price <span class="text-danger">*</span></h5>
                   <div class="controls">
-                      <input type="text" name="product_code" class="form-control" required="">
+                      <input type="text" name="product_code" value="{{isset($edit) ? $edit->product_code : ''}}" class="form-control" required="">
                       </div>
               </div>
                       
@@ -223,11 +236,15 @@
                   <div class="col-md-4">
 
                     <div class="form-group">
-                          <h5>Main Thambnail<span class="text-danger">*</span></h5>
-                          <div class="controls">
-                              <input type="file" name="product_code" class="form-control" required="">
-                              </div>
-                      </div>
+                        <h5>Main Thambnail <span class="text-danger">*</span></h5>
+                        <div class="controls">
+                 <input type="file" name="product_thambnail" class="form-control" onChange="mainThamUrl(this)"  >
+                 @error('product_thambnail') 
+                 <span class="text-danger">{{ $message }}</span>
+                 @enderror
+                 <img src="" id="mainThmb">
+                          </div>
+                    </div>
                               
                           </div>
                           <div class="col-md-4">
@@ -235,7 +252,7 @@
                             <div class="form-group">
                                   <h5>Multiple Image <span class="text-danger">*</span></h5>
                                   <div class="controls">
-                                    <input type="file" name="multi_img[]" class="form-control" multiple="" id="multiImg" required="">
+                                    <input type="file" name="multi_img[]" class="form-control" multiple="" id="multiImg" >
                                          <div class="row" id="preview_img"></div>
                                              </div>
                               </div>
@@ -248,7 +265,7 @@
             <div class="form-group">
              <h5>Product Short Dis English<span class="text-danger">*</span></h5>
                 <div class="controls">
-                 <textarea class="form-control" name="short_descp_en" id="editor1" cols="30" rows="10"></textarea>
+                 <textarea class="form-control" name="short_descp_en" id="editor1" cols="30" rows="10">{{isset($edit) ? $edit->short_descp_en : ''}}</textarea>
                  @error('short_descp_en') 
                  <span class="text-danger">{{ $message }}</span>
                  @enderror 
@@ -261,7 +278,7 @@
             <div class="form-group">
             <h5>Product Short Dis Bangla<span class="text-danger">*</span></h5>
             <div class="controls">
-            <textarea class="form-control textarea" name="short_descp_bn"  cols="30" rows="10"></textarea>
+            <textarea class="form-control textarea" name="short_descp_bn"  cols="30" rows="10">{{isset($edit) ? $edit->short_descp_bn : ''}}</textarea>
             @error('short_descp_bn') 
             <span class="text-danger">{{ $message }}</span>
             @enderror 
@@ -277,7 +294,7 @@
             <div class="form-group">
              <h5>Product Long Dis English<span class="text-danger">*</span></h5>
                 <div class="controls">
-                 <textarea class="form-control textarea" name="long_descp_en"  cols="30" rows="10"></textarea>
+                 <textarea class="form-control textarea" name="long_descp_en"  cols="30" rows="10">{{isset($edit) ? $edit->long_descp_en : ''}} </textarea>
                  @error('long_descp_en') 
                  <span class="text-danger">{{ $message }}</span>
                  @enderror 
@@ -290,7 +307,7 @@
             <div class="form-group">
             <h5>Product Long Dis Bangla<span class="text-danger">*</span></h5>
             <div class="controls">
-            <textarea class="form-control textarea"  name="long_descp_bn"  cols="30" rows="10"></textarea>
+            <textarea class="form-control textarea"  name="long_descp_bn"  cols="30" rows="10">{{isset($edit) ? $edit->long_descp_bn : ''}}</textarea>
             @error('long_descp_bn') 
             <span class="text-danger">{{ $message }}</span>
             @enderror 
@@ -305,12 +322,12 @@
             <div class="form-group">
         <div class="controls">
             <fieldset>
-                <input type="checkbox" id="checkbox_2" name="hot_deals" value="1">
-                <label for="checkbox_2">Hot Deals</label>
+                <input type="checkbox" id="checkbox_1" name="hot_deals" value="1">
+                <label for="checkbox_1">Hot Deals</label>
             </fieldset>
             <fieldset>
-                <input type="checkbox" id="checkbox_3" name="featured" value="1">
-                <label for="checkbox_3">Featured</label>
+                <input type="checkbox" id="checkbox_2" name="featured" value="1">
+                <label for="checkbox_2">Featured</label>
             </fieldset>
         </div>
         </div>
@@ -319,12 +336,12 @@
             <div class="form-group">
         <div class="controls">
             <fieldset>
-                <input type="checkbox" id="checkbox_2" name="special_offer" value="1">
-                <label for="checkbox_2">Special Offer</label>
+                <input type="checkbox" id="checkbox_3" name="special_offer" value="1">
+                <label for="checkbox_3">Special Offer</label>
             </fieldset>
             <fieldset>
-                <input type="checkbox" id="checkbox_3" name="special_deals" value="1">
-                <label for="checkbox_3">Special Deals</label>
+                <input type="checkbox" id="checkbox_4" name="special_deals" value="1">
+                <label for="checkbox_4">Special Deals</label>
             </fieldset>
         </div>
         </div>
@@ -333,7 +350,13 @@
     </div>  
  
         <div class="text-xs-right">
-        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Product">					 
+            @if (isset($edit))
+                
+            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Product">					 
+            @else
+                
+            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Product">					 
+            @endif
         </div>
         </form>
 

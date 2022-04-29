@@ -24,9 +24,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($index as $item)
+                                @foreach ($subcat as $item)
                                 <tr>    
-                                    {{-- <td> {{ $item['category']['category_name_en'] }}  </td>    --}}
+                                    <td> {{ $item['category']['category_name_en'] }}  </td>   
                                     <td>{{$item->subcategory_name_en}} </td>
                                     <td>{{$item->subcategory_name_bn}} </td>
                                     <td>

@@ -55,9 +55,10 @@ Route::resource('subsubcategory', SubSubCategoryController::class);
 Route::get('/subcategory/ajax/{category_id}', [SubSubCategoryController::class, 'GetSubCategory']);
 
 Route::get('/subsubcategory/ajax/{subcategory_id}', [SubSubCategoryController::class, 'GetSubSubCategory']);
-});
 // products
 Route::resource('product', ProductController::class);
+
+});
 
 //// Frontend All Routes /////
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {

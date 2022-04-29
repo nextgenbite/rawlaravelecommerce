@@ -134,7 +134,7 @@
     </div>
     <!-- /.main-header --> 
     @php
-       $categories= App\Models\Category::orderBy('category_name_en','ASC')->get();
+       $categories= App\Models\Category::select('id','category_name_en')->orderBy('category_name_en','ASC')->get();
     @endphp
     <!-- ============================================== NAVBAR ============================================== -->
     <div class="header-nav animate-dropdown">
@@ -156,22 +156,23 @@
                       <li>
 @php
 $subcategories= App\Models\SubCategory::whereCategory_id($category->id)->orderBy('subcategory_name_en','ASC')->get();
+
 @endphp                 
                     
                         <div class="yamm-content ">
                           <div class="row">
                           @foreach ($subcategories as $subcateogry)
-                      
+@php
+$subsubcategories= App\Models\SubSubCategory::whereSubcategory_id($subcateogry->id)->orderBy('subsubcategory_name_en','ASC')->get();
+@endphp
                           <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
                             <h2 class="title">{{$subcateogry->subcategory_name_en}} </h2>
                             <ul class="links">
-                              <li><a href="#">Dresses</a></li>
-                              <li><a href="#">Shoes </a></li>
-                              <li><a href="#">Jackets</a></li>
-                              <li><a href="#">Sunglasses</a></li>
-                              <li><a href="#">Sport Wear</a></li>
-                              <li><a href="#">Blazers</a></li>
-                              <li><a href="#">Shirts</a></li>
+                            @foreach ($subsubcategories as $subSubCat)
+                                
+                            <li><a href="#">{{$subSubCat->subsubcategory_name_en}}</a></li>
+                            @endforeach
+                             
                             </ul>
                           </div>
                           @endforeach
@@ -202,7 +203,7 @@ $subcategories= App\Models\SubCategory::whereCategory_id($category->id)->orderBy
                                 <li><a href="blog.html">Blog</a></li>
                                 <li><a href="blog-details.html">Blog Detail</a></li>
                                 <li><a href="contact.html">Contact</a></li>
-                                <li><a href="sign-in.html">Sign In</a></li>
+                                <li><a href="{{route('login')}} ">Sign In</a></li>
                                 <li><a href="my-wishlist.html">Wishlist</a></li>
                                 <li><a href="terms-conditions.html">Terms and Condition</a></li>
                                 <li><a href="track-orders.html">Track Orders</a></li>

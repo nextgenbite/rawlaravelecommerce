@@ -15,9 +15,9 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $subcat =SubCategory::latest()->get();
+        $subcat =SubCategory::select('id', 'category_id', 'subcategory_name_en')->latest()->get();
       
-        $category =Category::orderBy('category_name_en','ASC')->get();
+        $category =Category::select('id', 'category_name_en')->orderBy('category_name_en','ASC')->get();
 
         return view('backend.subcategory.index', compact('subcat', 'category'));
     }
