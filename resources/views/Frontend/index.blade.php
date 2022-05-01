@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row"> 
         <!-- ============================================== SIDEBAR ============================================== -->
-        @include('frontend.body.sidebar')
+        @include('Frontend.body.sidebar')
         <!-- /.sidemenu-holder --> 
         <!-- ============================================== SIDEBAR : END ============================================== --> 
         
