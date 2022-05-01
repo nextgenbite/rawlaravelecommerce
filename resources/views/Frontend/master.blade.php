@@ -11,19 +11,19 @@
 <title>E Shop</title>
 
 <!-- Bootstrap Core CSS -->
-<link rel="stylesheet" href="{{asset('Frontend/assets/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
 
 <!-- Customizable CSS -->
-<link rel="stylesheet" href="{{asset('Frontend/assets/css/main.css')}}">
-<link rel="stylesheet" href="{{asset('Frontend/assets/css/blue.css')}}">
-<link rel="stylesheet" href="{{asset('Frontend/assets/css/owl.carousel.css')}}">
-<link rel="stylesheet" href="{{asset('Frontend/assets/css/owl.transitions.css')}}">
-<link rel="stylesheet" href="{{asset('Frontend/assets/css/animate.min.css')}}">
-<link rel="stylesheet" href="{{asset('Frontend/assets/css/rateit.css')}}">
-<link rel="stylesheet" href="{{asset('Frontend/assets/css/bootstrap-select.min.css')}}">
+<link rel="stylesheet" href="{{asset('frontend/assets/css/main.css')}}">
+<link rel="stylesheet" href="{{asset('frontend/assets/css/blue.css')}}">
+<link rel="stylesheet" href="{{asset('frontend/assets/css/owl.carousel.css')}}">
+<link rel="stylesheet" href="{{asset('frontend/assets/css/owl.transitions.css')}}">
+<link rel="stylesheet" href="{{asset('frontend/assets/css/animate.min.css')}}">
+<link rel="stylesheet" href="{{asset('frontend/assets/css/rateit.css')}}">
+<link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap-select.min.css')}}">
 
 <!-- Icons/Glyphs -->
-<link rel="stylesheet" href="{{asset('Frontend/assets/css/font-awesome.css')}}">
+<link rel="stylesheet" href="{{asset('frontend/assets/css/font-awesome.css')}}">
 
 <!-- Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
@@ -47,17 +47,17 @@
 <!-- For demo purposes – can be removed on production : End --> 
 
 <!-- JavaScripts placed at the end of the document so the pages load faster --> 
-<script src="{{asset('Frontend/assets/js/jquery-1.11.1.min.js')}}"></script> 
-<script src="{{asset('Frontend/assets/js/bootstrap.min.js')}}"></script> 
-<script src="{{asset('Frontend/assets/js/bootstrap-hover-dropdown.min.js')}}"></script> 
-<script src="{{asset('Frontend/assets/js/owl.carousel.min.js')}}"></script> 
-<script src="{{asset('Frontend/assets/js/echo.min.js')}}"></script> 
-<script src="{{asset('Frontend/assets/js/jquery.easing-1.3.min.js')}}"></script> 
-<script src="{{asset('Frontend/assets/js/bootstrap-slider.min.js')}}"></script> 
-<script src="{{asset('Frontend/assets/js/jquery.rateit.min.js')}}"></script> 
-<script type="text/javascript" src="{{asset('Frontend/assets/js/lightbox.min.js')}}"></script> 
-<script src="{{asset('Frontend/assets/js/bootstrap-select.min.js')}}"></script> 
-<script src="{{asset('Frontend/assets/js/wow.min.js')}}"></script> 
-<script src="{{asset('Frontend/assets/js/scripts.js')}}"></script>
+<script src="{{asset('frontend/assets/js/jquery-1.11.1.min.js')}}"></script> 
+<script src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script> 
+<script src="{{asset('frontend/assets/js/bootstrap-hover-dropdown.min.js')}}"></script> 
+<script src="{{asset('frontend/assets/js/owl.carousel.min.js')}}"></script> 
+<script src="{{asset('frontend/assets/js/echo.min.js')}}"></script> 
+<script src="{{asset('frontend/assets/js/jquery.easing-1.3.min.js')}}"></script> 
+<script src="{{asset('frontend/assets/js/bootstrap-slider.min.js')}}"></script> 
+<script src="{{asset('frontend/assets/js/jquery.rateit.min.js')}}"></script> 
+<script type="text/javascript" src="{{asset('frontend/assets/js/lightbox.min.js')}}"></script> 
+<script src="{{asset('frontend/assets/js/bootstrap-select.min.js')}}"></script> 
+<script src="{{asset('frontend/assets/js/wow.min.js')}}"></script> 
+<script src="{{asset('frontend/assets/js/scripts.js')}}"></script>
 </body>
 </html>
