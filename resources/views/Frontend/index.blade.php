@@ -12,7 +12,7 @@
         <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder"> 
           <!-- ========================================== SECTION – HERO ========================================= -->
           
-        @include('frontend.body.slider')
+        @include('Frontend.body.slider')
           
           <!-- ========================================= SECTION – HERO : END ========================================= --> 
           
