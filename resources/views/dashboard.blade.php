@@ -1,4 +1,4 @@
-@extends('frontend.master')
+@extends('Frontend.master')
 @section('content')
 <div class="breadcrumb">
 	<div class="container">
@@ -15,7 +15,7 @@
 	<div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-4">
-                @include('frontend.common.user_menu')
+                @include('Frontend.common.user_menu')
             </div>
             
             <div class="col-md-8 col-sm-8">
@@ -34,7 +34,7 @@
             </div>
         </div>
 		<!-- ============================================== BRANDS CAROUSEL ============================================== -->
-        @include('frontend.body.brand')
+        @include('Frontend.body.brand')
         <!-- /.logo-slider --> 
 <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->	</div><!-- /.container -->
 </div>
