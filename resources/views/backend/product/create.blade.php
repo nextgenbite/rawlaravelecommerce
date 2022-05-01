@@ -23,6 +23,7 @@
     <form method="POST" action="{{Route('product.update', $edit->id)}}" enctype="multipart/form-data" >
         @csrf
         @method('PATCH')   
+        <input type="hidden" name="old_image" value="{{ $edit->product_thambnail }}">	
     @else
         
     <form method="POST" action="{{Route('product.store')}}" enctype="multipart/form-data" >

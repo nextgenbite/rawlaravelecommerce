@@ -6,13 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Support\Facades\Hash;
 
 class IndexController extends Controller
 {
     public function index()
-    {
-       return view('frontend.index');
+    { 
+      $featured =Product::whereFeatured('1')->select('id','product_name_en','product_thambnail', 'selling_price')->whereStatus('1')->latest()->get();
+      $newAllproduct =Product::select('id','product_name_en','product_thambnail', 'selling_price')->whereStatus('1')->latest()->limit(10)->get();
+       return view('Frontend.index', compact('featured', 'newAllproduct'));
     }
 
 

@@ -6,11 +6,11 @@
       <nav class="yamm megamenu-horizontal">
         <ul class="nav">
 @php
-$categories= App\Models\Category::select('id','category_name_en')->orderBy('category_name_en','ASC')->get();
+$categories= App\Models\Category::select('id','category_name_en', 'category_icon')->orderBy('category_name_en','ASC')->get();
 @endphp
         @foreach ($categories as $cat)
             
-        <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-shopping-bag" aria-hidden="true"></i>{{$cat->category_name_en}}</a>
+        <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon {{$cat->category_icon}} " aria-hidden="true"></i>{{$cat->category_name_en}}</a>
             <ul class="dropdown-menu mega-menu">
               <li class="yamm-content">
 @php

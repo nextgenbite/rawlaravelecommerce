@@ -140,16 +140,25 @@ class ProductController extends Controller
     public function update(Request $request, $id =0)
     {
         // return response()->json($request->all());
-        $image = $request->file('product_thambnail');
-    	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-    	Image::make($image)->resize(917,1000)->save('uploads/products/thambnail/'.$name_gen);
-    	$save_url = 'uploads/products/thambnail/'.$name_gen;
+        if ($request->file('product_thambnail')) {
+            unlink($request->old_image);
+            $image = $request->file('product_thambnail');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(917,1000)->save('uploads/products/thambnail/'.$name_gen);
+            $save_url = 'uploads/products/thambnail/'.$name_gen;
+    
+            $product = Product::findOrNew($id);
+            $product->fill($request->all());
+            $product->product_thambnail = $save_url;
+            $product->save();
+            return redirect(route('product.index'));
+        }else{
+            $product = Product::findOrNew($id);
+            $product->fill($request->all());
+            $product->save();
+            return redirect(route('product.index'));
 
-        $product = Product::findOrNew($id);
-        $product->fill($request->all());
-        $product->product_thambnail = $save_url;
-        $product->save();
-        return redirect(route('product.index'));
+        }
     }
 
     /**
