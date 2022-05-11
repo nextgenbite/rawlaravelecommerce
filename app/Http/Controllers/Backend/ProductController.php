@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Subcategory;
+use App\Models\Subsubcategory;
 use App\Models\Product;
 use Image;
 use App\Models\Multi_image;
@@ -30,10 +32,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $brand =Brand::select('brand_name_en', 'id')->orderBy('brand_name_en', 'ASC')->get();
-        $cat =category::select('category_name_en', 'id')->orderBy('category_name_en', 'ASC')->get();
+        $brands =Brand::select('brand_name_en', 'id')->orderBy('brand_name_en', 'ASC')->get();
+        $categories =category::select('category_name_en', 'id')->orderBy('category_name_en', 'ASC')->get();
         //return response()->json($cat);
-        return view('backend.product.create', compact('cat', 'brand'));
+        return view('Backend.product.create', compact('categories', 'brands'));
     }
 
     /**
@@ -44,7 +46,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-    //    return response()->json($request->all());
+
+        // $request->validate([
+        //     'file' => 'required|mimes:jpeg,png,jpg,zip,pdf|max:2048',
+        //     'product_thambnail' => 'required|mimes:jpeg,png,jpg|max:2048',
+        //   ]);
+  
 
     	$image = $request->file('product_thambnail');
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -84,16 +91,20 @@ class ProductController extends Controller
 		'status' => 1,
 
     	]);
-
+       
         $images = $request->file('multi_img');
-        foreach ($images as $key => $img) {
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-    	Image::make($image)->resize(917,1000)->save('uploads/products/multi_img/'.$name_gen);
-    	$uploadPath = 'uploads/products/multi_img/'.$name_gen;
-            Multi_image::create([
-                'product_id' => $product_id,
-                'photo_name' => $uploadPath,
-            ]);
+      foreach ($images as $img) {
+      	$make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+    	Image::make($img)->resize(917,1000)->save('uploads/products/multi_img/'.$make_name);
+    	$uploadPath = 'uploads/products/multi_img/'.$make_name;
+
+    	Multi_image::create([
+
+    		'product_id' => $product_id,
+    		'photo_name' => $uploadPath,
+    		
+
+    	]);
             
         } 
 
@@ -126,8 +137,18 @@ class ProductController extends Controller
     {
         $edit =Product::findOrFail($id);
         $brand =Brand::select('brand_name_en', 'id')->orderBy('brand_name_en', 'ASC')->get();
-        $cat =category::select('category_name_en', 'id')->orderBy('category_name_en', 'ASC')->get();
-        return view('backend.product.create', compact('edit', 'cat', 'brand'));
+        $cat =Category::select('category_name_en', 'id')->orderBy('category_name_en', 'ASC')->get();
+        foreach ($cat as $key => $item) {
+           
+            $subcat =Subcategory::whereCategory_id($item->id)->select('subcategory_name_en', 'id')->orderBy('subcategory_name_en', 'ASC')->get();
+            // foreach ($subcat as $key => $subcats) {
+               
+            //     $subsubcat =Subsubcategory::where('Subcategory_id', $subcats->id)->select('subsubcategory_name_en', 'id')->orderBy('subsubcategory_name_en', 'ASC')->get();
+            // }
+        }
+         $subsubcat =Subsubcategory::select('subsubcategory_name_en', 'id')->orderBy('subsubcategory_name_en', 'ASC')->get();
+        // return response()->json($subsubcat);
+        return view('Backend.product.edit', compact('edit', 'cat', 'brand', 'subcat', 'subsubcat'));
     }
 
     /**
@@ -151,12 +172,22 @@ class ProductController extends Controller
             $product->fill($request->all());
             $product->product_thambnail = $save_url;
             $product->save();
-            return redirect(route('product.index'));
+
+            $notification = array(
+                'message' => 'Product Updated Successfully',
+                'alert-type' => 'info'
+            );
+            return redirect(route('product.index'))->with($notification);
         }else{
             $product = Product::findOrNew($id);
             $product->fill($request->all());
             $product->save();
-            return redirect(route('product.index'));
+
+            $notification = array(
+                'message' => 'Product Updated Successfully',
+                'alert-type' => 'info'
+            );
+            return redirect(route('product.index'))->with($notification);
 
         }
     }
@@ -169,6 +200,48 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        unlink($product->product_thambnail);
+        $product->delete();
+        $image = Multi_image::Where('Product_id', $id)->get();
+        foreach ($image as $key => $img) {
+           unlink($img->photo_name);
+           Multi_image::Where('Product_id', $id)->delete();
+        }
+
+        $notification = array(
+			'message' => 'Product Deleted Successfully',
+			'alert-type' => 'error'
+		);
+        return redirect()->back()->with($notification);
+    }
+
+    public function productActive($id)
+    {
+        Product::findOrFail($id)->update([
+           
+            'status' => 1,
+            
+            ]);
+        $notification = array(
+            'message' => 'Product Activated Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect(route('product.index'))->with($notification);
+    }
+    public function productInactive($id)
+    {
+        Product::findOrFail($id)->update([
+           
+            'status' => 0,
+            
+            ]);
+        $notification = array(
+            'message' => 'Product Deactivated Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect(route('product.index'))->with($notification);
     }
 }

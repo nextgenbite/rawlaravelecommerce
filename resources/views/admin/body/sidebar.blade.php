@@ -72,6 +72,20 @@
            
           </ul>
         </li>  
+        <li class="treeview {{ ($route == 'slider.index' || $route == 'slider.edit')? 'active':'' }}">
+          <a href="#">
+            <i data-feather="message-circle"></i>
+            <span>Slider</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+        
+            <li><a href="{{Route('slider.index')}} "><i class="ti-more"></i>Slider List</a></li>
+           
+          </ul>
+        </li>  
         
  	  
 		 

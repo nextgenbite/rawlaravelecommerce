@@ -6,18 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\Slider;
+use App\Models\Multi_image;
 use Illuminate\Support\Facades\Hash;
 
 class IndexController extends Controller
 {
     public function index()
-    { 
-      $featured =Product::whereFeatured('1')->select('id','product_name_en','product_thambnail', 'selling_price')->whereStatus('1')->latest()->get();
-      $newAllproduct =Product::select('id','product_name_en','product_thambnail', 'selling_price')->whereStatus('1')->latest()->limit(10)->get();
-       return view('Frontend.index', compact('featured', 'newAllproduct'));
+    { $categories =Category::select('id', 'category_name_en', 'category_name_bn')->latest()->get();
+      $sliders =Slider::whereStatus('1')->latest()->get();
+      $featured =Product::whereFeatured('1')->select('id','product_name_en','product_name_bn', 'product_slug_en','product_slug_bn','product_thambnail', 'selling_price', 'discount_price')->whereStatus('1')->latest()->get();
+      $newAllproduct =Product::select('id','product_name_en', 'product_name_bn','product_slug_en','product_slug_bn', 'product_thambnail', 'selling_price','discount_price')->whereStatus('1')->latest()->limit(10)->get();
+       return view('Frontend.index', compact('featured', 'newAllproduct', 'sliders', 'categories'));
     }
-
 
     public function ProfileUpdate(Request $request)
     {
@@ -66,5 +69,16 @@ class IndexController extends Controller
 		}else{
 			return redirect()->back();
 		}
+    }
+
+    public function ProductDetails($id,$slug)
+    {
+      $p_details =Product::whereId($id)
+      ->whereStatus('1')
+      ->first();
+        $imgs =Multi_image::whereProduct_id($p_details->id)->get();
+
+      // return response()->json( $imgs);
+      return view('Frontend.product.productdetails', compact('p_details', 'imgs'));
     }
 }

@@ -126,7 +126,13 @@ class SubSubCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Subsubcategory::findOrFail($id)->delete();
+        $notification = array(
+            'message' => 'Sub Sub-Category Delete Successfully',
+            'alert-type' => 'danger'
+        );
+
+        return redirect(route('subsubcategory.index'))->with($notification); 
     }
     public function GetSubCategory($category_id)
     {

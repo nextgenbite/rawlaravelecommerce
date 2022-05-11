@@ -6,7 +6,7 @@
 <section class="content">
     <div class="row">
        
-        <div class="col-xl-8 col-8">
+        <div class="col-xl-8">
             <div class="box overflow-hidden pull-up">
                 <div class="box-header with-border">
                     <h3 class="box-title">Sub Category List <span class="badge badge-pill badge-sm badge-danger">{{count($subcat)}} </span></h3>
@@ -31,11 +31,11 @@
                                     <td>{{$item->subcategory_name_bn}} </td>
                                     <td>
                                     <div class="row">
-                                        <a href="{{ Route('subcategory.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
+                                        <a href="{{ Route('subcategory.edit',$item->id) }}" class="btn btn-info btn-sm" title="Edit Data"><i class="fa fa-pencil"></i> </a>
                                     <form action="{{Route('subcategory.destroy', $item->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                    <button class="btn btn-danger" type="submit"> <i class="fa fa-trash"></i></button>
+                                    <button class="btn btn-danger btn-sm" type="submit"> <i class="fa fa-trash"></i></button>
                                     </form>
                                     </div>
                                     
@@ -52,10 +52,10 @@
         </div>
 
 <!--   ------------ Add Category Page -------- -->
-<div class="col-xl-4 col-4">
+<div class="col-xl-4">
 <div class="box">
 <div class="box-header with-border">
-<h3 class="box-title">Add Category </h3>
+<h3 class="box-title">Add Sub Category </h3>
 </div>
 <!-- /.box-header -->
 <div class="box-body">

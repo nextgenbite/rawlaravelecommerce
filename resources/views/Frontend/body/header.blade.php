@@ -30,11 +30,14 @@
                   <li><a href="#">GBP</a></li>
                 </ul>
               </li>
-              <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">English </span><b class="caret"></b></a>
+              <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">Language  </span><b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">English</a></li>
-                  <li><a href="#">French</a></li>
-                  <li><a href="#">German</a></li>
+                  @if (session()->get('language') ==  'bangla')
+                  <li><a href="{{route('english.language')}} ">English</a></li>
+                  @else   
+                  <li><a href="{{route('bangla.language')}}">বাংলা</a></li>
+                  @endif
+             
                 </ul>
               </li>
             </ul>
@@ -134,7 +137,7 @@
     </div>
     <!-- /.main-header --> 
     @php
-       $categories= App\Models\Category::select('id','category_name_en')->orderBy('category_name_en','ASC')->get();
+       $categories= App\Models\Category::select('id','category_name_en', 'category_name_bn')->orderBy('category_name_en','ASC')->get();
     @endphp
     <!-- ============================================== NAVBAR ============================================== -->
     <div class="header-nav animate-dropdown">
@@ -151,7 +154,7 @@
                   <li class="active dropdown yamm-fw"> <a href="{{URL::to('/')}}" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Home</a> </li>
                   @foreach ($categories as $category)
                       
-                  <li class="dropdown yamm mega-menu"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">{{$category->category_name_en}} </a>
+                  <li class="dropdown yamm mega-menu"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">{{ session()->get('language') == 'english' ? $category->category_name_en: $category->category_name_bn}} </a>
                     <ul class="dropdown-menu container">
                       <li>
 @php
@@ -166,11 +169,11 @@ $subcategories= App\Models\SubCategory::whereCategory_id($category->id)->orderBy
 $subsubcategories= App\Models\SubSubCategory::whereSubcategory_id($subcateogry->id)->orderBy('subsubcategory_name_en','ASC')->get();
 @endphp
                           <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                            <h2 class="title">{{$subcateogry->subcategory_name_en}} </h2>
+                            <h2 class="title">{{session()->get('language') == 'english'? $subcateogry->subcategory_name_en: $subcateogry->subcategory_name_bn}} </h2>
                             <ul class="links">
                             @foreach ($subsubcategories as $subSubCat)
                                 
-                            <li><a href="#">{{$subSubCat->subsubcategory_name_en}}</a></li>
+                            <li><a href="#">{{session()->get('language') == 'english'? $subSubCat->subsubcategory_name_en : $subSubCat->subsubcategory_name_bn}}</a></li>
                             @endforeach
                              
                             </ul>

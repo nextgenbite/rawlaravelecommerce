@@ -8,7 +8,9 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Backend\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +59,12 @@ Route::get('/subcategory/ajax/{category_id}', [SubSubCategoryController::class, 
 Route::get('/subsubcategory/ajax/{subcategory_id}', [SubSubCategoryController::class, 'GetSubSubCategory']);
 // products
 Route::resource('product', ProductController::class);
-
+Route::get('/product/active/{id}', [ProductController::class, 'productActive']);
+Route::get('/product/inactive/{id}', [ProductController::class, 'productInactive']);
+// slider
+Route::resource('slider', SliderController::class);
+Route::get('/slider/active/{id}', [SliderController::class, 'sliderActive']);
+Route::get('/slider/inactive/{id}', [SliderController::class, 'sliderInactive']);
 });
 
 //// Frontend All Routes /////
@@ -67,8 +74,14 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function 
     return view('dashboard',compact('user'));
 })->name('dashboard');
 
+
+// Multi Language
+Route::get('/language/english',[LanguageController::class, 'english'])->name('english.language');
+Route::get('/language/bangla',[LanguageController::class, 'bangla'])->name('bangla.language');
 Route::get('/',[IndexController::class, 'index'])->name('index');
 Route::get('user/logout',[IndexController::class, 'UserLogout'])->name('user.logout');
 Route::post('profile/update',[IndexController::class, 'ProfileUpdate'])->name('profile.update');
 Route::get('user/change/password',[IndexController::class, 'ChangePassword'])->name('change.password');
 Route::post('change/password',[IndexController::class, 'userPasswordUpdate'])->name('user.password.update');
+// ProductDetails
+Route::get('product/details/{id}/{slug}',[IndexController::class, 'ProductDetails'])->name('product.details');

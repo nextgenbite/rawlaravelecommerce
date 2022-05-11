@@ -6,7 +6,7 @@
 <section class="content">
     <div class="row">
        
-        <div class="col-xl-8 col-8">
+        <div class="col-xl-8">
             <div class="box overflow-hidden pull-up">
                 <div class="box-header with-border">
                     <h3 class="box-title">Category List <span class="badge badge-pill badge-sm badge-danger">{{count($category)}} </span></h3>
@@ -53,7 +53,7 @@
         </div>
 
 <!--   ------------ Add Category Page -------- -->
-<div class="col-xl-4 col-4">
+<div class="col-xl-4 ">
 <div class="box">
 <div class="box-header with-border">
 <h3 class="box-title">Add Category </h3>
