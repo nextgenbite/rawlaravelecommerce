@@ -311,7 +311,7 @@
 </div><!-- /.gallery-holder -->        			
 					<div class='col-sm-6 col-md-7 product-info-block'>
 						<div class="product-info">
-							<h1 class="name">Floral Print Buttoned</h1>
+							<h1 class="name">{{session()->get('language') == 'english' ? $p_details->product_name_en :$p_details->product_name_bn}}</h1>
 							
 							<div class="rating-reviews m-t-20">
 								<div class="row">
@@ -342,7 +342,7 @@
 							</div><!-- /.stock-container -->
 
 							<div class="description-container m-t-20">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+								{{session()->get('language') == 'english'? $p_details->short_descp_en:  $p_details->short_descp_en}}
 							</div><!-- /.description-container -->
 
 							<div class="price-container info-container m-t-20">
@@ -351,7 +351,7 @@
 
 									<div class="col-sm-6">
 										<div class="price-box">
-											<span class="price">$800.00</span>
+											<span class="price">{{$p_details->selling_price}}৳</span>
 											<span class="price-strike">$900.00</span>
 										</div>
 									</div>
@@ -425,7 +425,7 @@
 								
 								<div id="description" class="tab-pane in active">
 									<div class="product-tab">
-										<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br><br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+										<p class="text">{{session()->get('language') == 'english' ? $p_details->long_descp_en:  $p_details->long_descp_bn }} </p>
 									</div>	
 								</div><!-- /.tab-pane -->
 

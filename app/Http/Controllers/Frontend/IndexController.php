@@ -76,7 +76,7 @@ class IndexController extends Controller
       $p_details =Product::whereId($id)
       ->whereStatus('1')
       ->first();
-        $imgs =Multi_image::whereProduct_id($p_details->id)->get();
+        $imgs =Multi_image::whereProduct_id($id)->get();
 
       // return response()->json( $imgs);
       return view('Frontend.product.productdetails', compact('p_details', 'imgs'));

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSlidersTable extends Migration
+class CreateCouponsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateSlidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('sliders', function (Blueprint $table) {
+        Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->string('slider_img');
-            $table->string('title')->nullable();
-            $table->text('description')->nullable();
-            $table->boolean('status')->default(0);
+            $table->string('coupon_name');
+            $table->integer('coupon_discount');
+            $table->string('coupon_validity');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateSlidersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sliders');
+        Schema::dropIfExists('coupons');
     }
 }

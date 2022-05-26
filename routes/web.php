@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\LanguageController;
 
@@ -65,6 +66,9 @@ Route::get('/product/inactive/{id}', [ProductController::class, 'productInactive
 Route::resource('slider', SliderController::class);
 Route::get('/slider/active/{id}', [SliderController::class, 'sliderActive']);
 Route::get('/slider/inactive/{id}', [SliderController::class, 'sliderInactive']);
+
+// slider
+Route::resource('coupon', CouponController::class);
 });
 
 //// Frontend All Routes /////

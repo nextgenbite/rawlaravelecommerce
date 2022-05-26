@@ -51,10 +51,10 @@
                                     </form>
                                     @if ($item->status == 1)
                                         
-                                    <a href="#" class="btn btn-success btn-sm" title="Inactive Now"><i class="fa fa-arrow-up"></i> </a>
+                                    <a href="{{url('admin/product/inactive/'.$item->id)}}" class="btn btn-success btn-sm" title="Inactive Now"><i class="fa fa-arrow-up"></i> </a>
                                     @else
                                         
-                                    <a href="#" class="btn btn-danger btn-sm" title="Inactive Now"><i class="fa fa-arrow-down"></i> </a>
+                                    <a href="{{url('admin/product/active/'.$item->id)}}" class="btn btn-danger btn-sm" title="Inactive Now"><i class="fa fa-arrow-down"></i> </a>
                                     @endif
                                 </div>
                                     

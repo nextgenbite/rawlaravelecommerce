@@ -84,11 +84,10 @@ class ProductController extends Controller
 		'short_descp_en' => $request->short_descp_en,
 		'short_descp_bn' => $request->short_descp_bn,
 		'product_thambnail' => $save_url,
-		'hot_deals' => $request->hot_deals,
-		'featured' => $request->featured,
-		'special_offer' => $request->special_offer,
-		'special_deals' => $request->special_deals,
-		'status' => 1,
+		// 'hot_deals' => $request->hot_deals,
+		// 'featured' => $request->featured,
+		// 'special_offer' => $request->special_offer,
+		// 'special_deals' => $request->special_deals,
 
     	]);
        
@@ -220,7 +219,7 @@ class ProductController extends Controller
     {
         Product::findOrFail($id)->update([
            
-            'status' => 1,
+            'status' => true,
             
             ]);
         $notification = array(
@@ -234,7 +233,7 @@ class ProductController extends Controller
     {
         Product::findOrFail($id)->update([
            
-            'status' => 0,
+            'status' => false,
             
             ]);
         $notification = array(

@@ -317,7 +317,7 @@
             </div>
                         
     </div> 
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-6">
             <div class="form-group">
         <div class="controls">
@@ -347,7 +347,7 @@
         </div>
         </div>
 
-    </div>  
+    </div>   --}}
  
         <div class="text-xs-right">
             @if (isset($edit))

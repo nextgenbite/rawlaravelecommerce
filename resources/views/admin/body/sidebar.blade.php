@@ -86,6 +86,20 @@
            
           </ul>
         </li>  
+        <li class="treeview {{ ($route == 'coupon.index' || $route == 'coupon.edit')? 'active':'' }}">
+          <a href="#">
+            <i data-feather="message-circle"></i>
+            <span>Cupon</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+        
+            <li><a href="{{Route('coupon.index')}} "><i class="ti-more"></i>Cupon List</a></li>
+           
+          </ul>
+        </li>  
         
  	  
 		 

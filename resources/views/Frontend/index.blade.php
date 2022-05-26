@@ -96,7 +96,7 @@
                             <h3 class="name"><a href="detail.html">{{session()->get('language') == 'english' ? $item->product_name_en: $item->product_name_bn}}</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> {{$item->selling_price}} </span> <span class="price-before-discount">$ 800</span> </div>
+                            <div class="product-price"> <span class="price"> {{$item->selling_price}} </span> <span class="price-before-discount"> 800৳</span> </div>
                             <!-- /.product-price --> 
                             
                           </div>
@@ -153,7 +153,7 @@
                           <h3 class="name"><a href="detail.html">{{session()->get('language') == 'english' ? $product->product_name_en :$product->product_name_bn}}</a></h3>
                           <div class="rating rateit-small"></div>
                           <div class="description"></div>
-                          <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                          <div class="product-price"> <span class="price">  {{$product->selling_price}}৳ </span> <span class="price-before-discount">$ 800</span> </div>
                           <!-- /.product-price --> 
                           
                         </div>
