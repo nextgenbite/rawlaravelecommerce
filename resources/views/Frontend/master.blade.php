@@ -42,6 +42,77 @@
 @include('Frontend.body.footer')
 <!-- ============================================================= FOOTER : END============================================================= --> 
 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="..." style="height: 200px; width: 200px;">
+                    {{-- <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div> --}}
+                  </div>
+              </div>
+    
+              <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item">Product Price: </li>
+                    <li class="list-group-item">Product Code: </li>
+                    <li class="list-group-item">Category: </li>
+                    <li class="list-group-item">Brand: </li>
+                    <li class="list-group-item">Stock: </li>
+                  </ul>
+              </div>
+    
+              <div class="col-md-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Choose Color</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Choose Size</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Quantity</label>
+                    <input type="number" class="form-control" value="1" min="1">
+                </div>
+                </div>
+
+        </div>
+
+        </div><!-- End Body -->
+        <div class="modal-footer">
+          
+          <button type="button" class="btn btn-primary">Add Cart</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Modal -->
 <!-- For demo purposes – can be removed on production --> 
 
 <!-- For demo purposes – can be removed on production : End --> 
