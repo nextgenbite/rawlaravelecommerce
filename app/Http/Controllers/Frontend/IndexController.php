@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Slider;
@@ -76,9 +77,47 @@ class IndexController extends Controller
       $p_details =Product::whereId($id)
       ->whereStatus('1')
       ->first();
+      $color_en = $p_details->product_color_en;
+      $product_color_en = explode(',', $color_en);
+      $size_en = $p_details->product_size_en;
+      $product_size_en = explode(',', $size_en);
+
         $imgs =Multi_image::whereProduct_id($id)->get();
 
-      // return response()->json( $imgs);
-      return view('Frontend.product.productdetails', compact('p_details', 'imgs'));
+      // return response()->json( $size_en);
+      return view('Frontend.product.productdetails', compact('p_details', 'imgs', 'product_color_en','product_size_en'));
     }
+    /// Product View With Ajax
+	public function ProductViewAjax($id){
+		$product = Product::with('category','brand')->findOrFail($id);
+
+		$color = $product->product_color_en;
+		$product_color = explode(',', $color);
+
+		$size = $product->product_size_en;
+		$product_size = explode(',', $size);
+
+		return response()->json(array(
+			'product' => $product,
+			'color' => $product_color,
+			'size' => $product_size,
+
+		));
+
+	} // end method 
+  public function SubCatWiseProduct($sub_id, $slug)
+  {
+    $products = Product::whereStatus(1)->whereSubcategory_id($sub_id)->with('category', 'brand')->get();
+    $categories = Category::all();
+    $brands = Brand::all();
+    return view('Frontend.product.subcategory_view', compact('products','categories', 'brands' ));
+  }
+  public function SubSubCatWiseProduct($sub_id, $slug)
+  {
+    $products = Product::whereStatus(1)->whereSubsubcategory_id($sub_id)->with('category', 'brand')->get();
+    // return response()->json($products);
+    $categories = Category::all();
+    $brands = Brand::all();
+    return view('Frontend.product.sub_subcategory_view', compact('products','categories', 'brands' ));
+  }
 }

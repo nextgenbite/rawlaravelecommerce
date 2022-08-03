@@ -103,19 +103,21 @@
         
  	  
 		 
-        <li class="header nav-small-cap">User Interface</li>
-		  
+        <li class="header nav-small-cap">Shipping</li>
+
         <li class="treeview">
           <a href="#">
             <i data-feather="grid"></i>
-            <span>Components</span>
+            <span>Ship Area</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
-            <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
+            <li><a href="{{Route('division.view')}}"><i class="ti-more"></i>Division List</a></li>
+            <li><a href="{{Route('district.view')}}"><i class="ti-more"></i>District List</a></li>
+            <li><a href="{{Route('state.view')}}"><i class="ti-more"></i>State List</a></li>
+            
            
           </ul>
         </li>

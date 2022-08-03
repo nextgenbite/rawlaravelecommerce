@@ -1,3 +1,6 @@
+@php
+    $sliders = App\Models\Slider::whereStatus('1')->latest()->get();
+@endphp
 <div id="hero">
     <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
       @foreach ($sliders as $slider)

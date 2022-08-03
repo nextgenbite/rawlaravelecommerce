@@ -15,7 +15,7 @@
 			    </a>
 			</li>			
 			<li class="btn-group nav-item">
-				<a href="{{URL::to('/')}} " class="waves-effect waves-light nav-link rounded svg-bt-icon " title="Full Screen">
+				<a href="{{URL::to('/')}} " class="waves-effect waves-light nav-link rounded svg-bt-icon " title="Home">
 					<i class="nav-link-icon mdi mdi-home"></i>
 			    </a>
 			</li>			

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -10,8 +11,12 @@ use App\Http\Controllers\Backend\SubSubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\LanguageController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\User\WishlistControllor;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +74,28 @@ Route::get('/slider/inactive/{id}', [SliderController::class, 'sliderInactive'])
 
 // slider
 Route::resource('coupon', CouponController::class);
+
+// shipping
+
+//Division
+Route::get('/ship-division', [ShippingAreaController::class, 'divisionView'])->name('division.view');
+Route::post('/ship-division/store', [ShippingAreaController::class, 'divisionStore'])->name('division.store');
+Route::get('/ship-division/edit/{id}', [ShippingAreaController::class, 'divisionEdit'])->name('division.edit');
+Route::patch('/ship-division/update/{id}', [ShippingAreaController::class, 'divisionUpdate'])->name('division.update');
+Route::get('/ship-division/delete/{id}', [ShippingAreaController::class, 'divisionDestroy'])->name('division.destroy');
+
+//District
+Route::get('/ship-district', [ShippingAreaController::class, 'districtView'])->name('district.view');
+Route::post('/ship-district/store', [ShippingAreaController::class, 'districtStore'])->name('district.store');
+Route::get('/ship-district/edit/{id}', [ShippingAreaController::class, 'districtEdit'])->name('district.edit');
+Route::patch('/ship-district/update/{id}', [ShippingAreaController::class, 'districtUpdate'])->name('district.update');
+Route::get('/ship-district/delete/{id}', [ShippingAreaController::class, 'districtDestroy'])->name('district.destroy');
+//State
+Route::get('/ship-state', [ShippingAreaController::class, 'stateView'])->name('state.view');
+Route::post('/ship-state/store', [ShippingAreaController::class, 'stateStore'])->name('state.store');
+Route::get('/ship-state/edit/{id}', [ShippingAreaController::class, 'stateEdit'])->name('state.edit');
+Route::patch('/ship-state/update/{id}', [ShippingAreaController::class, 'stateUpdate'])->name('state.update');
+Route::get('/ship-state/delete/{id}', [ShippingAreaController::class, 'stateDestroy'])->name('state.destroy');
 });
 
 //// Frontend All Routes /////
@@ -87,5 +114,71 @@ Route::get('user/logout',[IndexController::class, 'UserLogout'])->name('user.log
 Route::post('profile/update',[IndexController::class, 'ProfileUpdate'])->name('profile.update');
 Route::get('user/change/password',[IndexController::class, 'ChangePassword'])->name('change.password');
 Route::post('change/password',[IndexController::class, 'userPasswordUpdate'])->name('user.password.update');
+//Sub Category wise Product
+Route::get('subcategory/product/{sub_id}/{slug}',[IndexController::class, 'SubCatWiseProduct'])->name('product.subcat');
+// SubSub Category wise Product
+Route::get('sub-subcategory/product/{sub_id}/{slug}',[IndexController::class, 'SubSubCatWiseProduct'])->name('product.subsubcat');
 // ProductDetails
 Route::get('product/details/{id}/{slug}',[IndexController::class, 'ProductDetails'])->name('product.details');
+// Product View Modal with Ajax
+Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
+
+// mini Cart Store Data
+Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
+Route::get('/product/mini/cart', [CartController::class, 'getDataMiniCart']);
+Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'removeToCart']);
+// cart page
+Route::get('/mycart', [CartController::class, 'cartPageView'])->name('mycart');
+
+Route::post('add-to-wishlist/{id}', [WishlistControllor::class, 'Addtowishlist'])->name('store.wishlist');
+Route::get('/user/get-wishlist-product', [WishlistControllor::class, 'getwishlist'])->name('getwishlist');
+Route::get('/user/wishlist-remove/{id}', [WishlistControllor::class, 'removewishlist'])->name('removewishlist');
+Route::get('wishlist', [WishlistControllor::class, 'wishlist'])->name('wishlist');
+
+// Checkout Routes 
+
+Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
+
+Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'DistrictGetAjax']);
+
+Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
+
+Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
+
+// Frontend Coupon Option
+Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
+
+Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
+
+Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
+
+Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order');
+
+Route::post('/cash/order', [CashController::class, 'CashOrder'])->name('cash.order');
+
+Route::get('/my/orders', [AllUserController::class, 'MyOrders'])->name('my.orders');
+
+Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails']);
+
+Route::get('/invoice_download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
+
+Route::post('/return/order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return.order');
+
+Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('return.order.list');
+
+Route::get('/cancel/orders', [AllUserController::class, 'CancelOrders'])->name('cancel.orders');
+
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
+

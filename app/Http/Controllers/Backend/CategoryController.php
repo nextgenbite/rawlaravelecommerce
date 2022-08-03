@@ -95,7 +95,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         Category::findOrFail($id)->update([
-            'category_name_en' => $request->category_name_en,
+        'category_name_en' => $request->category_name_en,
 		'category_name_bn' => $request->category_name_bn,
 		'category_slug_en' => strtolower(str_replace(' ', '-',$request->category_name_en)),
 		'category_slug_bn' => str_replace(' ', '-',$request->category_name_bn),

@@ -137,14 +137,9 @@ class ProductController extends Controller
         $edit =Product::findOrFail($id);
         $brand =Brand::select('brand_name_en', 'id')->orderBy('brand_name_en', 'ASC')->get();
         $cat =Category::select('category_name_en', 'id')->orderBy('category_name_en', 'ASC')->get();
-        foreach ($cat as $key => $item) {
+      
+         $subcat =Subcategory::select('subcategory_name_en', 'id')->orderBy('subcategory_name_en', 'ASC')->get();
            
-            $subcat =Subcategory::whereCategory_id($item->id)->select('subcategory_name_en', 'id')->orderBy('subcategory_name_en', 'ASC')->get();
-            // foreach ($subcat as $key => $subcats) {
-               
-            //     $subsubcat =Subsubcategory::where('Subcategory_id', $subcats->id)->select('subsubcategory_name_en', 'id')->orderBy('subsubcategory_name_en', 'ASC')->get();
-            // }
-        }
          $subsubcat =Subsubcategory::select('subsubcategory_name_en', 'id')->orderBy('subsubcategory_name_en', 'ASC')->get();
         // return response()->json($subsubcat);
         return view('Backend.product.edit', compact('edit', 'cat', 'brand', 'subcat', 'subsubcat'));

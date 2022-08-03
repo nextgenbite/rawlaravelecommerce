@@ -11,235 +11,12 @@
   
     
     
-    	<!-- ============================================== HOT DEALS ============================================== -->
-<div class="sidebar-widget hot-deals wow fadeInUp outer-top-vs">
-	<h3 class="section-title">hot deals</h3>
-	<div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-xs">
-		
-														<div class="item">
-					<div class="products">
-						<div class="hot-deal-wrapper">
-							<div class="image">
-								<img src="{{asset('frontend/assets/images/hot-deals/p5.jpg')}}" alt="">
-							</div>
-							<div class="sale-offer-tag"><span>35%<br>off</span></div>
-							<div class="timing-wrapper">
-								<div class="box-wrapper">
-									<div class="date box">
-										<span class="key">120</span>
-										<span class="value">Days</span>
-									</div>
-								</div>
-				                
-				                <div class="box-wrapper">
-									<div class="hour box">
-										<span class="key">20</span>
-										<span class="value">HRS</span>
-									</div>
-								</div>
-
-				                <div class="box-wrapper">
-									<div class="minutes box">
-										<span class="key">36</span>
-										<span class="value">MINS</span>
-									</div>
-								</div>
-
-				                <div class="box-wrapper hidden-md">
-									<div class="seconds box">
-										<span class="key">60</span>
-										<span class="value">SEC</span>
-									</div>
-								</div>
-							</div>
-						</div><!-- /.hot-deal-wrapper -->
-
-						<div class="product-info text-left m-t-20">
-							<h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-							<div class="rating rateit-small"></div>
-
-							<div class="product-price">	
-								<span class="price">
-									$600.00
-								</span>
-									
-							    <span class="price-before-discount">$800.00</span>					
-							
-							</div><!-- /.product-price -->
-							
-						</div><!-- /.product-info -->
-
-						<div class="cart clearfix animate-effect">
-							<div class="action">
-								
-								<div class="add-cart-button btn-group">
-									<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-										<i class="fa fa-shopping-cart"></i>													
-									</button>
-									<button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-															
-								</div>
-								
-							</div><!-- /.action -->
-						</div><!-- /.cart -->
-					</div>	
-					</div>		        
-													<div class="item">
-					<div class="products">
-						<div class="hot-deal-wrapper">
-							<div class="image">
-								<img src="{{asset('frontend/assets/images/products/p6.jpg')}}" alt="">
-							</div>
-							<div class="sale-offer-tag"><span>35%<br>off</span></div>
-							<div class="timing-wrapper">
-								<div class="box-wrapper">
-									<div class="date box">
-										<span class="key">120</span>
-										<span class="value">Days</span>
-									</div>
-								</div>
-				                
-				                <div class="box-wrapper">
-									<div class="hour box">
-										<span class="key">20</span>
-										<span class="value">HRS</span>
-									</div>
-								</div>
-
-				                <div class="box-wrapper">
-									<div class="minutes box">
-										<span class="key">36</span>
-										<span class="value">MINS</span>
-									</div>
-								</div>
-
-				                <div class="box-wrapper hidden-md">
-									<div class="seconds box">
-										<span class="key">60</span>
-										<span class="value">SEC</span>
-									</div>
-								</div>
-							</div>
-						</div><!-- /.hot-deal-wrapper -->
-
-						<div class="product-info text-left m-t-20">
-							<h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-							<div class="rating rateit-small"></div>
-
-							<div class="product-price">	
-								<span class="price">
-									$600.00
-								</span>
-									
-							    <span class="price-before-discount">$800.00</span>					
-							
-							</div><!-- /.product-price -->
-							
-						</div><!-- /.product-info -->
-
-						<div class="cart clearfix animate-effect">
-							<div class="action">
-								
-								<div class="add-cart-button btn-group">
-									<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-										<i class="fa fa-shopping-cart"></i>													
-									</button>
-									<button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-															
-								</div>
-								
-							</div><!-- /.action -->
-						</div><!-- /.cart -->
-					</div>	
-					</div>		        
-													<div class="item">
-					<div class="products">
-						<div class="hot-deal-wrapper">
-							<div class="image">
-								<img src="{{asset('frontend/assets/images/products/p7.jpg')}}" alt="">
-							</div>
-							<div class="sale-offer-tag"><span>35%<br>off</span></div>
-							<div class="timing-wrapper">
-								<div class="box-wrapper">
-									<div class="date box">
-										<span class="key">120</span>
-										<span class="value">Days</span>
-									</div>
-								</div>
-				                
-				                <div class="box-wrapper">
-									<div class="hour box">
-										<span class="key">20</span>
-										<span class="value">HRS</span>
-									</div>
-								</div>
-
-				                <div class="box-wrapper">
-									<div class="minutes box">
-										<span class="key">36</span>
-										<span class="value">MINS</span>
-									</div>
-								</div>
-
-				                <div class="box-wrapper hidden-md">
-									<div class="seconds box">
-										<span class="key">60</span>
-										<span class="value">SEC</span>
-									</div>
-								</div>
-							</div>
-						</div><!-- /.hot-deal-wrapper -->
-
-						<div class="product-info text-left m-t-20">
-							<h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-							<div class="rating rateit-small"></div>
-
-							<div class="product-price">	
-								<span class="price">
-									$600.00
-								</span>
-									
-							    <span class="price-before-discount">$800.00</span>					
-							
-							</div><!-- /.product-price -->
-							
-						</div><!-- /.product-info -->
-
-						<div class="cart clearfix animate-effect">
-							<div class="action">
-								
-								<div class="add-cart-button btn-group">
-									<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-										<i class="fa fa-shopping-cart"></i>													
-									</button>
-									<button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-															
-								</div>
-								
-							</div><!-- /.action -->
-						</div><!-- /.cart -->
-					</div>	
-					</div>		        
-						
-	    
-    </div><!-- /.sidebar-widget -->
-</div>
+<!-- ============================================== HOT DEALS ============================================== -->
+	@include('Frontend.common.hotdeals')
 <!-- ============================================== HOT DEALS: END ============================================== -->					
 
 <!-- ============================================== NEWSLETTER ============================================== -->
-<div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small outer-top-vs">
-	<h3 class="section-title">Newsletters</h3>
-	<div class="sidebar-widget-body outer-top-xs">
-		<p>Sign Up for Our Newsletter!</p>
-        <form>
-        	 <div class="form-group">
-			    <label class="sr-only" for="exampleInputEmail1">Email address</label>
-			    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Subscribe to our newsletter">
-			  </div>
-			<button class="btn btn-primary">Subscribe</button>
-		</form>
-	</div><!-- /.sidebar-widget-body -->
-</div><!-- /.sidebar-widget -->
+	@include('Frontend.common.newsletter')
 <!-- ============================================== NEWSLETTER: END ============================================== -->
 
 <!-- ============================================== Testimonials============================================== -->
@@ -311,7 +88,7 @@
 </div><!-- /.gallery-holder -->        			
 					<div class='col-sm-6 col-md-7 product-info-block'>
 						<div class="product-info">
-							<h1 class="name">{{session()->get('language') == 'english' ? $p_details->product_name_en :$p_details->product_name_bn}}</h1>
+							<h1 id="pname" class="name">{{session()->get('language') == 'english' ? $p_details->product_name_en :$p_details->product_name_bn}}</h1>
 							
 							<div class="rating-reviews m-t-20">
 								<div class="row">
@@ -373,6 +150,56 @@
 								</div><!-- /.row -->
 							</div><!-- /.price-container -->
 
+ <!--     /// Add Product Color And Product Size ///// -->
+
+ <div class="row">
+									
+
+	<div class="col-sm-6">
+
+<div class="form-group">
+
+	<label class="info-title control-label">Choose Color <span> </span></label>
+	<select class="form-control unicase-form-control selectpicker" style="display: none;" id="color">
+		<option selected="" disabled="">--Choose Color--</option>
+		@foreach($product_color_en as $color)
+		<option value="{{ $color }}">{{ ucwords($color) }}</option>
+		 @endforeach
+	</select> 
+
+</div> <!-- // end form group -->
+		 
+	</div> <!-- // end col 6 -->
+
+		<div class="col-sm-6">
+
+<div class="form-group">
+	@if($p_details->product_size_en == null)
+
+	@else	
+
+	<label class="info-title control-label">Choose Size <span> </span></label>
+	<select class="form-control unicase-form-control selectpicker" style="display: none;" id="size">
+		<option selected="" disabled="">--Choose Size--</option>
+		@foreach($product_size_en as $size)
+		<option value="{{ $size }}">{{ ucwords($size) }}</option>
+		 @endforeach
+	</select> 
+
+	@endif
+	
+</div> <!-- // end form group -->
+
+			 
+		</div> <!-- // end col 6 -->
+
+	 </div><!-- /.row -->
+
+
+
+ <!--     /// End Add Product Color And Product Size ///// -->
+
+
 							<div class="quantity-container info-container">
 								<div class="row">
 									
@@ -383,17 +210,18 @@
 									<div class="col-sm-2">
 										<div class="cart-quantity">
 											<div class="quant-input">
-								                <div class="arrows">
+								                {{-- <div class="arrows">
 								                  <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
 								                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
-								                </div>
-								                <input type="text" value="1">
+								                </div> --}}
+								                <input type="number"  id="qty" value="1" min="1">
 							              </div>
 							            </div>
 									</div>
-
+									<input type="hidden" id="product_id" value="{{$p_details->id}}">
 									<div class="col-sm-7">
-										<a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+					
+										<button type="submit" class="btn btn-primary mb-2" onclick="addToCart()" ><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
 									</div>
 
 									

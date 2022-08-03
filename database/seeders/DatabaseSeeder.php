@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use DB;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,6 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Admin::Factory()->create();
+        // \App\Models\Admin::Factory()->create();
+
+        $public_path = 'public/data.sql';
+        DB::unprepared(file_get_contents($public_path));
+        $this->command->info('All data are added');
     }
 }

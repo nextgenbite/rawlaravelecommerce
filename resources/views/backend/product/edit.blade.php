@@ -18,17 +18,13 @@
 </div>
 <!-- /.box-header -->
 <div class="box-body">
-    @if (isset($edit))
+
         
     <form method="POST" action="{{Route('product.update', $edit->id)}}" enctype="multipart/form-data" >
         @csrf
         @method('PATCH')   
         <input type="hidden" name="old_image" value="{{ $edit->product_thambnail }}">	
-    @else
-        
-    <form method="POST" action="{{Route('product.store')}}" enctype="multipart/form-data" >
-        @csrf
-    @endif
+
 
   
     <div class="row">
@@ -72,6 +68,7 @@
                         {{-- <option value="" selected="" disabled="">Select Category</option> --}}
                         @foreach($subcat as $item)
                         <option value="{{$item->id}} " {{$item->id == $edit->subcategory_id ? 'selected': '' }} >{{$item->subcategory_name_en}} </option> 
+                        
                         @endforeach
                     </select>                           
                     @error('subcategory_id') 
@@ -89,6 +86,7 @@
                     <select name="subsubcategory_id" class="form-control"  >
                         @foreach($subsubcat as $item)
                         <option value="{{$item->id}} " {{$item->id == $edit->subsubcategory_id ? 'selected' : '' }} >{{$item->subsubcategory_name_en}} </option> 
+                        
                         @endforeach
                     </select>                           
                     @error('subcategory_id') 
