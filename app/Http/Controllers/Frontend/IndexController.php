@@ -83,7 +83,8 @@ class IndexController extends Controller
       $product_size_en = explode(',', $size_en);
 
         $imgs =Multi_image::whereProduct_id($id)->get();
-
+        $cat_id = $p_detail->category_id;
+		$relatedUpload = Product::whereStatus(1)->where('category_id',$cat_id)->where('id','!=',$id)->orderBy('id','DESC')->take(3)->get();
       // return response()->json( $size_en);
       return view('Frontend.product.productdetails', compact('p_details', 'imgs', 'product_color_en','product_size_en'));
     }
